@@ -33,7 +33,7 @@ class ImportData:
 
   def create_table_items_statement(self,table_name):
     allowed = string.digits + string.ascii_letters + "_"
-    table_items = [ re.sub('[^a-zA-Z0-9 _\-\n\.]', '', column_name) for column_name in self.read_table_columns("../data/{}.csv".format(table_name))]
+    table_items = [ re.sub('[^a-zA-Z0-9 _\-\n\.]', '', column_name) for column_name in self.read_table_columns("/home/mtracker/data/{}.csv".format(table_name))]
     statement = "".join("{} varchar(256),".format(table_item) for table_item in table_items)
     return statement.rstrip(',')
 
@@ -47,7 +47,7 @@ class ImportData:
       return list_of_column_names[1:]
    
   def get_table_names(self):
-    return [ item.split(".")[0] for item in os.listdir("../data") ]
+    return [ item.split(".")[0] for item in os.listdir("/home/mtracker/data") ]
 
   def create_tables(self):
     success = []
