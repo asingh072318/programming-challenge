@@ -10,10 +10,6 @@ PASSWORD_ENV_VAR_KEY = "POSTGRES_PASSWORD"
 class ImportData:
   def __init__(self):
     self.tables = self.get_table_names()
-    # self.current_table_index = 0
-    # self.current_table_name = self.tables[self.current_table_index]
-    # self.current_table_columns = self.read_table_columns("./data/{}.csv".format(self.current_table_name))
-    # self.current_table_items_statement = self.create_table_items_statement()
     self.statements_template = {
       "CREATE_TABLE": '''CREATE TABLE {} ( {} );''',
      }
@@ -31,15 +27,13 @@ class ImportData:
     try:
       cur.execute(statement)
       conn.commit()
-      print("Exec success")
       return "Successfull", 200
     except psycopg2.Error as e:
-      print(e)
       return e
 
   def create_table_items_statement(self,table_name):
     allowed = string.digits + string.ascii_letters + "_"
-    table_items = [ re.sub('[^a-zA-Z0-9 _\-\n\.]', '', column_name) for column_name in self.read_table_columns("./data/{}.csv".format(table_name))]
+    table_items = [ re.sub('[^a-zA-Z0-9 _\-\n\.]', '', column_name) for column_name in self.read_table_columns("../data/{}.csv".format(table_name))]
     statement = "".join("{} varchar(256),".format(table_item) for table_item in table_items)
     return statement.rstrip(',')
 
@@ -53,13 +47,12 @@ class ImportData:
       return list_of_column_names[1:]
    
   def get_table_names(self):
-    return [ item.split(".")[0] for item in os.listdir("./data") ]
+    return [ item.split(".")[0] for item in os.listdir("../data") ]
 
   def create_tables(self):
     success = []
     for each_table in self.tables:
         statement_to_execute = self.get_statement(CREATE_TABLE_KEY, each_table, self.create_table_items_statement(each_table))
-        print(statement_to_execute)
         try:
           self.execute_sql_statement(statement_to_execute)
           success.append(each_table)
