@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install fastapi psycopg2 "uvicorn[standard]"
 
-RUN git clone https://github.com/asingh072318/programming-challenge.git /home/mtracker
+ADD data /home/mtracker/data
 
-RUN cd /home/mtracker; git checkout asingh53; python3 /home/mtracker/image/import_data.py
+ADD import_data.py /home/mtracker/

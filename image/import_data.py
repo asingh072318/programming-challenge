@@ -22,11 +22,13 @@ class ImportData:
     elif key == INSERT_ITEM_KEY:
       list_of_items_to_insert = self.read_table_rows("/home/mtracker/data/{}.csv".format(table_name_statement))
       statement_of_items_to_insert = []
+      columns = "Id,"+",".join(self.getSanitizedColumns(table_name_statement))
       for item in list_of_items_to_insert:
-        statement_of_items_to_insert.append(",".join(item).rstrip(","))
-      return [ template.format(table_name_statement,statement_of_item) for statement_of_item in statement_of_items_to_insert ]
+        statement_of_items_to_insert.append(["'{}',".format(each_item) for each_item in item])
+      return [ template.format(table_name_statement,columns,"".join(statement_of_item).rstrip(',')) for statement_of_item in statement_of_items_to_insert ]
 
   def execute_sql_statement(self,statement):
+    print(statement)
     conn = psycopg2.connect(
             host="0.0.0.0",
             database="postgres",
@@ -38,6 +40,7 @@ class ImportData:
       conn.commit()
       return "Successfull", 200
     except psycopg2.Error as e:
+      print(e)
       return e
 
   def getSanitizedColumns(self,table_name):
@@ -46,7 +49,7 @@ class ImportData:
   def create_table_items_statement(self,table_name):
     allowed = string.digits + string.ascii_letters + "_"
     table_columns = self.getSanitizedColumns(table_name)
-    statement = "".join("{} varchar(256),".format(table_column) for table_column in table_columns)
+    statement = "Id varchar(256) NOT NULL,"+"".join("{} varchar(256),".format(table_column) for table_column in table_columns)
     return statement.rstrip(',')
 
   def read_table_columns(self,path_to_file):
@@ -74,7 +77,7 @@ class ImportData:
     success = []
     for each_table in self.tables:
         statements_to_execute = self.get_statements(CREATE_TABLE_KEY, each_table)
-        for statements_to_execute in statements_to_execute:
+        for statement_to_execute in statements_to_execute:
           try:
             self.execute_sql_statement(statement_to_execute)
             success.append(each_table)

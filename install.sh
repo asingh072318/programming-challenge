@@ -6,6 +6,7 @@ echo "
 cd /usr/local/bin/mtracker_files
 if [ "\$#" -eq 0 ]; then
     ./run.sh
+    
     exit 1
 fi
 case "\$1" in
@@ -27,4 +28,4 @@ esac
 " > /usr/local/bin/mtracker;
 chmod +x /usr/local/bin/mtracker_files/*.sh
 chmod +x /usr/local/bin/mtracker
-echo "Run 'mtracker launch' to launch mtracker."
+echo "Run 'mtracker' to launch mtracker."
