@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install fastapi psycopg2 "uvicorn[standard]"
 
-ADD data /home/mtracker/data
+# ADD data /home/mtracker/data
+# ADD api /home/mtracker/api
+# ADD import_data.py /home/mtracker/
 
-ADD import_data.py /home/mtracker/
+ADD ./* /home/mtracker/
