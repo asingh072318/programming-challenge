@@ -9,5 +9,5 @@ async def get_movements():
 
 
 @router.get("/movements/{move_type}/{premiseid}", tags=["{type}_premiseid"])
-async def get_move_data(premiseid: str):
+async def get_move_data(premiseid: str,move_type: str):
     return {"premiseid": premiseid,"type":move_type}
