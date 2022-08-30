@@ -8,5 +8,7 @@ echo "Waiting 5 seconds for container setup"
 sleep 5
 echo "Starting Data import on Postgres"
 docker exec -d mtracker_container python3 /home/mtracker/import_data.py
+echo "Starting the MTracker API"
+docker exec -w /home/mtracker/api -d mtracker_container uvicorn main:app --host=0.0.0.0 --port=8000
 echo "Data import completed, entering shell."
 docker exec -it mtracker_container /bin/bash
