@@ -28,7 +28,6 @@ class ImportData:
       return [ template.format(table_name_statement,columns,"".join(statement_of_item).rstrip(',')) for statement_of_item in statement_of_items_to_insert ]
 
   def execute_sql_statement(self,statement):
-    print(statement)
     conn = psycopg2.connect(
             host="0.0.0.0",
             database="postgres",
@@ -40,7 +39,6 @@ class ImportData:
       conn.commit()
       return "Successfull", 200
     except psycopg2.Error as e:
-      print(e)
       return e
 
   def getSanitizedColumns(self,table_name):
