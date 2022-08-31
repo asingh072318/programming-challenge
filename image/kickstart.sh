@@ -15,6 +15,6 @@ cd /home/mtracker/spa && npm run build
 echo "Starting the API and Web App"
 supervisord -c /home/mtracker/supervisord.conf
 
-echo "Waiting 10 seconds for Services to start"
-sleep 10
+echo "Waiting 5 seconds for Services to start"
+sleep 5
 /bin/bash
