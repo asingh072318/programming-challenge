@@ -65,7 +65,7 @@ export default function DisplayData({move_data={response:[],status:0}}:DisplayPr
                 </Box>
                 <Divider />
                 <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-between',height:'30%',width:'100%',color:'#F8F0E3'}}>
-                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'24%',color:'white',backgroundColor:'black'}}>DETAILS:</Box>
+                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'24%',color:'white',backgroundColor:'#28282B'}}>DETAILS:</Box>
                     <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'72%',color:'black',backgroundColor:'white'}}>
                         <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'33%'}}>
                                 #: {to_show.new_numitemsmoved}                
