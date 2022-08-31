@@ -45,7 +45,7 @@ interface RowProps{
 }
 
 const fetchMoveData = async (premise_id:any) => {
-  const res = await fetch("http://0.0.0.0:8000/movements/"+premise_id, {
+  const res = await fetch("http://localhost:3010/movements/"+premise_id, {
     headers: {
       origin: 'http://localhost',
       'Content-Type': 'application/json'

@@ -14,4 +14,6 @@ RUN pip3 install fastapi psycopg2 supervisor "uvicorn[standard]"
 
 WORKDIR /home/mtracker/spa
 
+EXPOSE 3010-3011
+
 RUN npm install
