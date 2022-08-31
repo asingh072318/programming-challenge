@@ -1,3 +1,11 @@
+# Details for usage:
+1. Must have Docker and git installed.
+2. Clone the repository using: `git clone https://github.com/asingh072318/programming-challenge.git mtracker`
+3. Goto mtracker directory and run: `sudo ./install.sh`
+4. After installation is complete use this to access shell:  `mtracker`
+
+
+
 # Programming challenge
 
 ## Background
