@@ -23,7 +23,7 @@ function Copyright() {
 export default function App() {
   
   const fetchInformation = async () => {
-    const res = await fetch("http://0.0.0.0:8000/movements/information", {
+    const res = await fetch("http://localhost:3010/movements/information", {
       headers: {
         origin: 'http://localhost',
         'Content-Type': 'application/json'
