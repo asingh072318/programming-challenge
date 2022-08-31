@@ -3,7 +3,7 @@ if [[ "$(docker images -q move_tracker 2> /dev/null)" == "" ]]; then
   /bin/bash build_image.sh
 fi
 docker kill mtracker_container
-docker run --rm --name mtracker_container -e POSTGRES_PASSWORD=testpass -it -v $HOME:/root -p 9999:5432 -d move_tracker 2> /dev/null
+docker run --rm --name mtracker_container -e POSTGRES_PASSWORD=testpass -it -v $HOME:/root -p 9999:5432 -p 8000:8000 -d move_tracker 2> /dev/null
 echo "Waiting 5 seconds for container setup"
 sleep 5
 echo "Starting Data import on Postgres"
