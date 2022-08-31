@@ -46,11 +46,11 @@ async def get_movements():
         for response_value in response_values_list:
             response_movement_item = dict(zip(response_keys,response_value))
             response_array_of_movements.append(response_movement_item)
-        return response_array_of_movements
+        return response_array_of_movements, 200
     return [{"id":"Some Random Id","total_animal":"1000","movein":"150","moveout":"100"}]
 
 # all movements from origin premiseid
-@router.get("/movements/information", tags=["premiseid"])
+@router.get("/movements/information", tags=["all information"])
 async def get_move_data():
     sqlObj = SqlHandler()
     response_keys = ["city_name","premise_id","total_animals"]
@@ -61,7 +61,7 @@ async def get_move_data():
         for response_value in response_values_list:
             response_value_item = dict(zip(response_keys,response_value))
             response_array_of_all_premises.append(response_value_item)
-        return response_array_of_all_premises
+        return response_array_of_all_premises, 200
     return {"No Premises information"}
 
 # all movements from origin premiseid
@@ -76,5 +76,5 @@ async def get_move_data(premiseid: str):
         for response_value in response_values_list:
             response_value_item = dict(zip(response_keys,response_value))
             response_array_of_premise_info.append(response_value_item)
-        return response_array_of_premise_info
+        return response_array_of_premise_info, 200
     return {"premiseid": premiseid}

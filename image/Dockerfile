@@ -1,10 +1,13 @@
 FROM postgres:latest
 
+COPY . /home/mtracker/
+
+
 RUN apt-get update && apt-get install -y \
   bsdmainutils git python3 python3-dev python3-pip vim \
-  procps curl libpq-dev nodejs npm \
+  procps curl libpq-dev  \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install fastapi psycopg2 "uvicorn[standard]"
+RUN /bin/bash /home/mtracker/node_installer.sh
 
-COPY . /home/mtracker/
+RUN pip3 install fastapi psycopg2 supervisor "uvicorn[standard]"
