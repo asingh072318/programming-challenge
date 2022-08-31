@@ -8,6 +8,7 @@ import ProTip from './components/ProTip';
 import ButtonAppBar from './components/ButtonAppBar';
 import CollapsibleTable from './components/Introduction';
 import get_information from './services/api_calls';
+import { useQuery } from "react-query";
 
 function Copyright() {
   return (
@@ -22,10 +23,24 @@ function Copyright() {
 }
 
 export default function App() {
-  useEffect(() => {
-    get_information();
-  }, []);
   
+
+  const fetchUsers = async () => {
+    const res = await fetch("http://0.0.0.0:8000/movements/information", {
+      headers: {
+        origin: 'http://localhost',
+        'Content-Type': 'application/json'
+      }
+    });
+    return res.json();
+  };
+
+  const {data, status} = useQuery("users", fetchUsers);
+  
+  useEffect(() => {
+    console.log(data)
+  }, [status]);
+
   return (
     <Container maxWidth={false}>
       <Box sx={{display: 'flex', flexDirection: 'column',height:'95vh', my: 2}}>

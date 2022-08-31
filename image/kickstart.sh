@@ -6,8 +6,8 @@ python3 /home/mtracker/import_data.py
 # echo "Starting the MTracker API"
 # cd /home/mtracker/api && supervisord
 
-echo "Installing forever, serve"
-npm install -g forever serve
+echo "Installing serve"
+npm install -g serve
 
 echo "Building the MTracker Web App"
 cd /home/mtracker/spa && npm run build

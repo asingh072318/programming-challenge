@@ -13,6 +13,7 @@ export default async function get_information(){
           {
             headers: {
               Accept: 'application/json',
+              origin: 'http://localhost'
             },
           },
         );
