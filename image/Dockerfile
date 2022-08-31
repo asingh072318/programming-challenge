@@ -11,3 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN /bin/bash /home/mtracker/node_installer.sh
 
 RUN pip3 install fastapi psycopg2 supervisor "uvicorn[standard]"
+
+WORKDIR /home/mtracker/spa
+
+RUN npm install
