@@ -17,4 +17,5 @@ supervisord -c /home/mtracker/supervisord.conf
 
 echo "Waiting 5 seconds for Services to start"
 sleep 5
+echo "http://localhost:3011"
 /bin/bash
