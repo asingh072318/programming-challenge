@@ -21,18 +21,6 @@ function createData(
     city_name,
     premise_id,
     total_animals,
-    history: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
   };
 }
 
@@ -57,7 +45,11 @@ const fetchMoveData = async (premise_id:any) => {
 function Row({row,setSelectedRow,selectedRow,setSelectedData}:RowProps) {
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset' }} }
+       onClick={() => { console.log(row.premise_id); setSelectedRow(row.premise_id); fetchMoveData(row.premise_id).then(response => {
+        console.log('response is ', response);
+        setSelectedData(response);
+      })}}>
         <TableCell component="th" scope="row" align="center">
           {row.city_name}
         </TableCell>
