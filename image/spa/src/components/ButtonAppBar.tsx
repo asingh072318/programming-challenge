@@ -9,8 +9,8 @@ import PetsIcon from '@mui/icons-material/Pets';
 
 export default function ButtonAppBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="static" sx={{background: '#28282B'}}>
         <Toolbar>
           <IconButton
             size="large"

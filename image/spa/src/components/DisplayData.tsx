@@ -16,12 +16,13 @@ export default function DisplayData({move_data={response:[],status:0}}:DisplayPr
         const to_show = move_data.response[0]
         return (
             <Card sx={{display:'flex',flexDirection:'column',height:'100%',width:'100%'}}>
-                <CardHeader
-                    title={to_show.new_origincity}
-                    subheader={<Typography sx={{color: '#F8F0E3'}}>{to_show.new_shipmentsstartdate}</Typography>}
-                    sx={{display:'flex',flexDirection:'row',backgroundColor:'#28282B',color:'#F8F0E3',justifyContent:'center',alignItems:'center',height:'40%'}}
-                />
-                <Box sx={{display:'flex',flexDirection:'row',height:'40%',width:'100%'}}>
+                <Box sx={{display:'flex',flexDirection:'row',backgroundColor:'#28282B',color:'#F8F0E3',justifyContent:'center',alignItems:'center',height:'30%'}}>
+                    <CardHeader
+                        title={to_show.new_origincity}
+                        subheader={<Typography sx={{color: '#F8F0E3'}}>{to_show.new_shipmentsstartdate}</Typography>}
+                    />
+                </Box>
+                <Box sx={{display:'flex',flexDirection:'row',height:'55%',width:'100%'}}>
                     <Box sx={{display:'flex',width:'50%',justifyContent:'center',p:2}}>
                         <CardContent sx={{display:'flex',flexDirection:'column'}}>
                             <Typography sx={{m:-1,fontWeight:'600',fontSize:'15'}}>Origin:</Typography>
@@ -64,19 +65,19 @@ export default function DisplayData({move_data={response:[],status:0}}:DisplayPr
                     </Box>
                 </Box>
                 <Divider />
-                <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-between',height:'30%',width:'100%',color:'#F8F0E3'}}>
-                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'24%',color:'white',backgroundColor:'#28282B'}}>DETAILS:</Box>
-                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'72%',color:'black',backgroundColor:'white'}}>
-                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'33%'}}>
-                                #: {to_show.new_numitemsmoved}                
+                <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-even',height:'15%',width:'100%',color:'#F8F0E3'}}>
+                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'20%',color:'white',backgroundColor:'#28282B'}}>Details:</Box>
+                    <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'80%',color:'black',backgroundColor:'white'}}>
+                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'40%'}}>
+                                {to_show.accountcompany}         
                         </Box>
                         <Divider orientation='vertical' />
-                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'33%'}}>
+                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'30%'}}>
                                 {to_show.new_species}                
                         </Box>
                         <Divider orientation='vertical' />
-                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'33%'}}>
-                                {to_show.accountcompany}                
+                        <Box sx={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',height:'100%',width:'30%'}}>
+                                #: {to_show.new_numitemsmoved}               
                         </Box>
                         <Divider orientation='vertical' />
                     </Box>
@@ -85,6 +86,7 @@ export default function DisplayData({move_data={response:[],status:0}}:DisplayPr
           );
     }
     return(
-        <div> Welcome to MTracker</div>
+        <Box sx={{m:'auto', display:'flex', bgcolor:'#28282B', height:'100%', width:'100%', 
+        alignItems: 'center', justifyContent: 'center', color: 'white' }}><Typography sx={{fontWeight:'bold', fontSize: 'h4.fontSize'}}>Welcome to MTracker</Typography></Box>
     )
 }
