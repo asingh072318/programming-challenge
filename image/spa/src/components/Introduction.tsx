@@ -88,7 +88,7 @@ interface TableProps{
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#28282B',
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -115,7 +115,7 @@ export default function CollapsibleTable({info={response:[],status:0},selectedRo
             <StyledTableCell align="center">City Name</StyledTableCell>
             <StyledTableCell align="center">Premise Id</StyledTableCell>
             <StyledTableCell align="center">Total Animals</StyledTableCell>
-            <StyledTableCell align="center"> Select for more details </StyledTableCell>
+            <StyledTableCell align="center" width="15%">Click for more info</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

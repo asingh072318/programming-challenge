@@ -6,6 +6,7 @@ import uvicorn
 origins = [
     "http://localhost",
     "http://localhost:3011",
+    "http://localhost:3000",
 ]
 
 app = FastAPI()
